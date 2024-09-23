@@ -1,16 +1,15 @@
-"""
-Informe o número da turma: 
-Turma - 
-
-Nome completo dos componentes.
-1 - 
-2 - 
-"""
-
-
+print("""""    
+    1 - Strogonoff
+    2 - Macarronada
+    3 - Feijoada
+    4 - Churrasco
+    5 - Moqueca de peixe
+    6 - 
+      
+      
+      
+      """)
 import os
-
-# Limpa o terminal.
 os.system("cls || clear") 
 
 
