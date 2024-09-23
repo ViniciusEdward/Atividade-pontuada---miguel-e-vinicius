@@ -11,6 +11,7 @@ print("""
     7 - Lasanha | R$ 35,00
     """)
 soma_dos_pedidos = 0
+
 opcao = int(input("Digite a numereção do prato desejado: "))
 
 match(opcao):
@@ -47,4 +48,6 @@ while True:
         case 0:
             soma_dos_pedidos += opcao
 
+
+    
 
