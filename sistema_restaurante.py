@@ -23,7 +23,7 @@ while True:
         case "4":
           print("\nchurrasco | R$ 50,00")    
         case "5":
-          print("\nmoqueca de peixe | R$ 25,00")    
+          print("\nmoqueca de peixe | R$ 30,00")    
         case "1":
           print("\nstrogonoff | R$ 25,00")    
         case "1":
