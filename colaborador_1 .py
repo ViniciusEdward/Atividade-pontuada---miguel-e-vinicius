@@ -12,7 +12,7 @@ print("""
     """)
 soma_dos_pedidos = 0
 
-opcao = int(input("Digite a numereção do prato desejado: "))
+opcao = input("Digite a numereção do prato desejado: ")
 
 match(opcao):
     case "1":
@@ -40,13 +40,15 @@ match(opcao):
         print("opção invalida")    
 
 while True:
-    adicionar = int(input("Deseja adicionar outro prato: A (adicionar) ou 0 (para calcular o valor)"))
+    adicionar = input("Deseja adicionar outro prato: A (adicionar) ou 0 (para calcular o valor)")
     
     match(adicionar):
         case 'A':
-            'n'
-        case 0:
+            opcao = int(input("Digite a numereção do prato desejado: "))
+        case "0":
             soma_dos_pedidos += opcao
+            pagamento = input("Digite a forma de pagamento: ")
+            
 
 
     
