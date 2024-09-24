@@ -41,30 +41,31 @@ def menu_principal():
         print("Nenhum prato foi pedido.")
         return
 
-    forma_pagamento = input("Escolha a forma de pagamento (avista/cartão): ").strip().lower()
+    forma_pagamento = input("Escolha a forma de pagamento (se for à vista: digite (V) | se for cartão: digite (C)): ").strip().lower()
 
-    if forma_pagamento == 'avista':
+    os.system("cls || clear")
+    if forma_pagamento == 'v':
         desconto = total * 0.10
         total_final = total - desconto
         print(f"Desconto aplicado: R$ {desconto:.2f} (10% à vista)")
+        print("Forma de pagamento: À vista")
 
-    elif forma_pagamento == 'cartão':
+    elif forma_pagamento == 'c':
         acréscimo = total * 0.10
         total_final = total + acréscimo
+        print("Forma de pagamento: Cartão")
         print(f"Acréscimo aplicado: R$ {acréscimo:.2f} (10% no cartão)")
 
     else:
         print("Forma de pagamento inválida. O total será considerado sem alterações.")
         total_final = total
 
-    os.system("cls || clear")
     print("--- Resumo do Pedido ---")
     print("Pratos escolhidos:")
     for nome, preco in pedidos:
         print(f"{nome} - R$ {preco:.2f}")
 
     print(f"Subtotal: R$ {total:.2f}")
-    print(f"Forma de pagamento: {forma_pagamento}")
     print(f"Total a pagar: R$ {total_final:.2f}")
 
 menu_principal()
