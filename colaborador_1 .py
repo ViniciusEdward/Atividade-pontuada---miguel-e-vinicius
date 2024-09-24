@@ -41,26 +41,34 @@ def menu_principal():
         print("Nenhum prato foi pedido.")
         return
 
-    forma_pagamento = input("Escolha a forma de pagamento (se for à vista: digite (V) | se for cartão: digite (C)): ").strip().lower()
-
     os.system("cls || clear")
-    if forma_pagamento == 'v':
-        desconto = total * 0.10
-        total_final = total - desconto
-        print(f"Desconto aplicado: R$ {desconto:.2f} (10% à vista)")
-        print("Forma de pagamento: À vista")
+    print("""=== Formas de pagamento ===
+    1 - À vista
+    2 - Cartão de crédito  
+          """)
+    
+    forma_pagamento = input("Escolha a forma de pagamento (V) ou (C): ").strip().lower()
+    
+    os.system("cls || clear")
+    print("=== Detalhes do pagamento ===")
+    match(forma_pagamento):
+        case 'v':
+            desconto = total * 0.10
+            total_final = total - desconto
+            print("Forma de pagamento: À vista")
+            print(f"Desconto aplicado: R$ {desconto:.2f} (10% à vista)")
+           
+        case 'c':
+            acréscimo = total * 0.10
+            total_final = total + acréscimo
+            print("Forma de pagamento: Cartão")
+            print(f"Acréscimo aplicado: R$ {acréscimo:.2f} (10% no cartão)")
 
-    elif forma_pagamento == 'c':
-        acréscimo = total * 0.10
-        total_final = total + acréscimo
-        print("Forma de pagamento: Cartão")
-        print(f"Acréscimo aplicado: R$ {acréscimo:.2f} (10% no cartão)")
+        case _:
+            print("Forma de pagamento inválida. O total será considerado sem alterações.")
+            total_final = total
 
-    else:
-        print("Forma de pagamento inválida. O total será considerado sem alterações.")
-        total_final = total
-
-    print("--- Resumo do Pedido ---")
+    print("\n=== Resumo do Pedido ===")
     print("Pratos escolhidos:")
     for nome, preco in pedidos:
         print(f"{nome} - R$ {preco:.2f}")
