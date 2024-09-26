@@ -77,9 +77,3 @@ def menu_principal():
     print(f"Total a pagar: R$ {total_final:.2f}")
 
 menu_principal()
-                
-                
-
-
-        
-
