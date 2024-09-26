@@ -1,53 +1,79 @@
 import os
 os.system("cls || clear")
-print(""" 
-        CARDÁPIO  
-    1 - Strogonoff | R$ 25,00
-    2 - Macarronada | R$ 15,00
-    3 - Feijoada | R$ 30,00
-    4 - Churrasco | R$ 50,00
-    5 - Moqueca de peixe | R$ 30,00
-    6 - Bife à parmegiana | R$ 25,00
-    7 - Lasanha | R$ 35,00
-    """)
-soma_dos_pedidos = 0
+def menu_principal():
+    menu = {
+        1: ("Strogonoff | R$", 25.00),
+        2: ("Macarronada | R$",  15.00),
+        3: ("Feijoada | R$", 30.00),
+        4: ("Churrasco | R$" , 50.00),
+        5: ("Moqueca de peixe | R$" , 30.00),
+        6: ("Bife à parmegiana | R$" , 25.00),
+        7: ("Lasanha | R$" , 35.00),
+    }
+    pedidos = []
+    total = 0.0
 
-opcao = int(input("Digite a numereção do prato desejado: "))
+    while True:
+        print("Menu de Pratos:")
+        for codigo, (nome, preco) in menu.items():
+            print(f"{codigo}: {nome} - R$ {preco:.2f}")
+        print("0: Finalizar pedido")
+        
+        codigo = int(input("\nDigite o código do prato desejado: "))
+        
+        if codigo == 0:
+            break
 
-match(opcao):
-    case "1":
-        print("Strogonoff | R$ 25,00")  
-        preco_strogonoff = 25  
-    case "2":
-        print("Macarronada | R$ 15,00")
-        preco_macarronada = 15    
-    case "3":
-        print("Feijoada | R$ 30,00")
-        preco_feijoda = 30    
-    case "4":
-        print("Churrasco | R$ 50,00")    
-        preco_churrasco = 50
-    case "5":
-        print("Moqueca de peixe | R$ 30,00")  
-        preco_moqueca = 30  
-    case "6":
-        print("Bife à parmegiana | R$ 25,00")  
-        preco_bife = 25  
-    case "7":
-        print("Lasanha | R$ 35,00")    
-        preco_lasanha = 35
-    case _:
-        print("opção invalida")    
+        elif codigo in menu:
+            pedidos.append(menu[codigo])
+            total += menu[codigo][1]
+            print(f"Adicionado: {menu[codigo][0]} - R$ {menu[codigo][1]:.2f}")
 
-while True:
-    adicionar = int(input("Deseja adicionar outro prato: A (adicionar) ou 0 (para calcular o valor)"))
+        else:
+            print("Código inválido. Tente novamente.")
+        
+        continuar = input("\nDeseja adicionar mais um prato? (s/n): ").strip().lower()
+        os.system("cls || clear")
+        if continuar != 's':
+            break
+
+    if not pedidos:
+        print("Nenhum prato foi pedido.")
+        return
+
+    os.system("cls || clear")
+    print("""=== Formas de pagamento ===
+    1 - À vista
+    2 - Cartão de crédito  
+          """)
     
-    match(adicionar):
-        case 'A':
-            'n'
-        case 0:
-            soma_dos_pedidos += opcao
-
-
+    forma_pagamento = input("Escolha a forma de pagamento (V) ou (C): ").strip().lower()
     
+    os.system("cls || clear")
+    print("=== Detalhes do pagamento ===")
+    match(forma_pagamento):
+        case 'v':
+            desconto = total * 0.10
+            total_final = total - desconto
+            print("Forma de pagamento: À vista")
+            print(f"Desconto aplicado: R$ {desconto:.2f} (10% à vista)")
+           
+        case 'c':
+            acréscimo = total * 0.10
+            total_final = total + acréscimo
+            print("Forma de pagamento: Cartão")
+            print(f"Acréscimo aplicado: R$ {acréscimo:.2f} (10% no cartão)")
 
+        case _:
+            print("Forma de pagamento inválida. O total será considerado sem alterações.")
+            total_final = total
+
+    print("\n=== Resumo do Pedido ===")
+    print("Pratos escolhidos:")
+    for nome, preco in pedidos:
+        print(f"{nome} - R$ {preco:.2f}")
+
+    print(f"Subtotal: R$ {total:.2f}")
+    print(f"Total a pagar: R$ {total_final:.2f}")
+
+menu_principal()
