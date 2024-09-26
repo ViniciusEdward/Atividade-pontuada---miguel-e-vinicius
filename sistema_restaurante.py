@@ -1,3 +1,18 @@
+"""
+Informe o número da turma: 
+Turma - 93313
+
+Nome completo dos componentes.
+1 - Vinicius Edward da Silva Alves Paixão
+2 - Miguel Lemos de Oliveira Esquivel
+"""
+
+
+
+
+
+
+
 import os
 os.system("cls || clear")
 def menu_principal():
